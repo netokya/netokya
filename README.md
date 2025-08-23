@@ -1,4 +1,4 @@
-## ok加速 👋
+## ok网络 👋
 最新网址
 https://www.netokya.com/
 

@@ -1,6 +1,6 @@
-## ok网络 👋
+## 好网络 👋
 最新网址
-https://www.netokya.com/
+https://www.好网络.com/
 
 <!--
 **netokya/netokya** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.

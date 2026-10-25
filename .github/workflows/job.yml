@@ -6,7 +6,7 @@ on:
   schedule:
     # 表达式说明：分钟 小时 日 月 星期
     # "35 * * * *" 表示：每小时的第 35 分钟执行一次
-    - cron: '35 * * * *'
+    - cron: '25,55 * * * *'
   
   # 允许在 GitHub Actions 页面手动触发
   workflow_dispatch:

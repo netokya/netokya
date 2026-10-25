@@ -1,0 +1,42 @@
+name: Auto Commit
+
+# 触发条件
+on:
+  # 定时触发：使用 Cron 语法
+  schedule:
+    # 表达式说明：分钟 小时 日 月 星期
+    # "35 * * * *" 表示：每小时的第 35 分钟执行一次
+    - cron: '35 * * * *'
+  
+  # 允许在 GitHub Actions 页面手动触发
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. 检出仓库代码
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      # 2. 配置 Git 提交用户信息
+      - name: Set Git Identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # 3. 修改或创建一个空文件来产生变更
+      - name: Make Empty Commit Change
+        run: |
+          # 使用当前时间戳更新一个名为 .git-history 的隐藏文件，产生一次代码变动
+          date -u >> .git-history
+          git add .git-history
+
+      # 4. 提交并推送代码到仓库
+      - name: Commit and Push Changes
+        run: |
+          git commit -m "chore: auto-commit blank update [skip ci]"
+          git push
